@@ -4,7 +4,7 @@ This is my personal website hosted using GitHub Pages.
 
 # Visit:
 
-https://andreaaguirreroman.github.io
+https://andreaguirreroman.github.io
 
 ##
 This site was built using a simple `index.html` file and configured with GitHub Pages.  

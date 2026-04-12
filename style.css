@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: linear-gradient(180deg, #f8f5ee 0%, #eee7d7 100%);
+  color: #2f2a24;
+  min-height: 100vh;
+}
+
+.container {
+  width: min(900px, 92%);
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.02em;
+}
+
+.hero p {
+  margin: 0 auto;
+  max-width: 700px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: #4d463d;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.field select {
+  padding: 12px;
+  border: 1px solid #c8bda8;
+  border-radius: 10px;
+  background: #fffdf8;
+  font-size: 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #6d5c45;
+  color: white;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.output-card {
+  background: rgba(255, 252, 246, 0.9);
+  border: 1px solid #d7ccb8;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(65, 52, 34, 0.08);
+}
+
+.poem-title {
+  text-align: center;
+  font-size: 1.3rem;
+  font-style: italic;
+  margin-bottom: 18px;
+  color: #43392f;
+  min-height: 1.5em;
+}
+
+.poem-output {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.9;
+  font-size: 1.1rem;
+  text-align: center;
+  min-height: 180px;
+}
+
+.status-message {
+  margin-top: 14px;
+  min-height: 1.5em;
+  text-align: center;
+  color: #5b5248;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-top: 32px;
+  }
+
+  .output-card {
+    padding: 20px;
+  }
+
+  .poem-output {
+    font-size: 1rem;
+  }
+}

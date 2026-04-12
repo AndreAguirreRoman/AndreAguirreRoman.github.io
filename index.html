@@ -1,14 +1,66 @@
----
----
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Andre's Site</title>
-  </head>
-  <body>
-    <h1>Hello Andre 🚀</h1>
-    <p>GitHub Pages site is live.</p>
-    <p>{{ site.description }}</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yuan Mei Style Poem Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>Yuan Mei Style Poem Generator</h1>
+      <p>
+        Generate a new poem inspired by classical Chinese lyric style:
+        quiet imagery, reflection, and a restrained emotional turn.
+      </p>
+    </header>
+
+    <section class="controls">
+      <div class="field">
+        <label for="themeSelect">Theme</label>
+        <select id="themeSelect">
+          <option value="moonlight">Moonlight</option>
+          <option value="autumn">Autumn</option>
+          <option value="spring">Spring</option>
+          <option value="solitude">Solitude</option>
+          <option value="farewell">Farewell</option>
+          <option value="river">River</option>
+          <option value="random">Random</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="lengthSelect">Poem Length</label>
+        <select id="lengthSelect">
+          <option value="4">4 lines</option>
+          <option value="6">6 lines</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="titleToggle">Include Title</label>
+        <select id="titleToggle">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="buttons">
+      <button id="generateBtn">Generate Poem</button>
+      <button id="copyBtn">Copy</button>
+    </section>
+
+    <section class="output-card">
+      <div id="poemTitle" class="poem-title"></div>
+      <pre id="poemOutput" class="poem-output">Your poem will appear here.</pre>
+    </section>
+
+    <p id="statusMessage" class="status-message"></p>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>

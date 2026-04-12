@@ -1,271 +1,90 @@
 const POEM_DATA = {
-  moonlight: {
-    titles: [
-      "Moon over the Courtyard",
-      "Night by the Window",
-      "Under a Thin Moon",
-      "The Quiet Terrace",
-      "Pale Light on the Steps"
-    ],
-    openings: [
-      "A thin moon lingers above the silent roof,",
-      "Night settles softly over the courtyard wall,",
-      "Pale light drifts across the empty steps,",
-      "Moonlight reaches the old bamboo gate,",
-      "The western sky clears after a passing rain,"
-    ],
-    images: [
-      "bamboo shadows lie broken on white stone.",
-      "a cool wind moves through the paper screen.",
-      "the well rope sways without a sound.",
-      "plum branches lean toward the lamp glow.",
-      "dew gathers along the mossed path."
-    ],
-    reflections: [
-      "I sit long enough to forget the hour,",
-      "old thoughts return, but only faintly,",
-      "the heart grows quiet before such light,",
-      "no one speaks, yet the room feels full,",
-      "I remember distance and say nothing,"
-    ],
-    transitions: [
-      "Far off, a bell is carried by the wind,",
-      "Somewhere beyond the wall, leaves stir once,",
-      "Cloud edges pass and brighten the eaves,",
-      "The night deepens around the narrow lane,",
-      "A faint fragrance crosses the open sill,"
-    ],
-    closings: [
-      "until even the shadows seem at rest.",
-      "and the moon keeps what I cannot name.",
-      "while the last brightness slips into stillness.",
-      "as though sorrow itself had grown transparent.",
-      "and no trace remains but the cool air."
-    ]
+  themes: {
+    wasatch_winter: {
+      adj: ["snow-capped", "frosty", "silent", "high", "steep", "cold", "pale", "enduring", "frozen", "bitter", "white", "towering", "hidden", "granite", "windswept", "glacial", "hushed", "iron-grey", "slate-blue", "severe", "unyielding", "remote", "crystalline", "blinding"],
+      noun: ["Y Mountain", "Timpanogos", "canyon", "valley", "pine", "Provo River", "snowdrift", "peak", "summit", "avalanche", "aspen", "ridge", "wind", "cornice", "couloir", "snowpack", "crevasse", "cirque", "treeline", "snowfield", "powder", "elk", "moose", "granite slab", "icefall", "chute", "backcountry", "snowshed", "lodgepole", "fir"],
+      verb: ["slumber", "watch", "gather", "wait", "endure", "breathe", "echo", "stand", "drift", "freeze", "shiver", "hide", "rest", "accumulate", "descend", "crack", "groan", "settle", "compress", "outlast", "silence", "bury", "release", "cascade"],
+      preposition: ["beneath", "above", "across", "beyond", "under", "near", "past", "through", "into", "along", "around", "between"]
+    },
+    campus_twilight: {
+      adj: ["quiet", "echoing", "empty", "golden", "faint", "ancient", "faithful", "still", "dim", "worn", "hallowed", "shadowed", "reverent", "ivy-clad", "columned", "spired", "solemn", "illumined", "century-old", "earnest", "devoted", "majestic", "granite-faced", "serene"],
+      noun: ["bell tower", "library", "quad", "path", "courtyard", "brick", "shadow", "carillon", "footstep", "hymn", "choir", "stone", "doorway", "Abraham Smoot Building", "Maeser Building", "JFSB", "Cougar statue", "BYU seal", "honor code", "devotional", "ward", "testimony", "scripture", "missionary", "elder", "sister", "creamery", "bookstore", "Heritage Halls", "Helaman Halls", "Stadium"],
+      verb: ["linger", "settle", "fade", "listen", "rest", "whisper", "deepen", "remain", "pause", "reflect", "gather", "depart", "consecrate", "testify", "covenant", "kneel", "serve", "study", "edify", "illumine", "uplift", "convene", "sing", "pray"],
+      preposition: ["across", "past", "beside", "through", "along", "behind", "within", "beneath", "above", "toward", "under", "beyond"]
+    },
+    desert_canyon: {
+      adj: ["red", "sunbaked", "dry", "carved", "vast", "dusty", "warm", "weathered", "hollow", "burnt", "ancient", "silent", "ochre", "vermillion", "maroon", "bone-dry", "parched", "layered", "stratified", "wind-polished", "copper-hued", "timeless", "eroded", "stark"],
+      noun: ["sandstone", "arch", "desert", "sagebrush", "canyon", "cliff", "plateau", "wind", "mesa", "juniper", "gorge", "dust", "Bryce Canyon", "Zion", "Canyonlands", "Arches", "Capitol Reef", "slot canyon", "hoodoo", "petroglyph", "pothole", "wash", "talus", "butte", "spire", "fin", "alcove", "seep", "prickly pear", "yucca"],
+      verb: ["stretch", "burn", "shift", "rise", "glow", "sweep", "wait", "remember", "sleep", "crack", "endure", "bake", "carve", "hollow", "oxidize", "calcify", "crumble", "stain", "layer", "compress", "fracture", "expose", "reveal", "outlast"],
+      preposition: ["beyond", "below", "into", "over", "within", "across", "between", "beneath", "against", "through", "under", "along"]
+    },
+    provo_autumn: {
+      adj: ["golden", "crisp", "falling", "amber", "brisk", "scattered", "fading", "cool", "sharp", "russet", "tawny", "burgundy", "ochre", "sienna", "smoke-tinged", "blushing", "fleeting", "wind-torn", "dappled", "blazing", "translucent", "ember-bright", "mellow"],
+      noun: ["maple", "leaf", "trail", "breeze", "dusk", "aspen", "grove", "harvest", "twilight", "orchard", "Provo Canyon", "Rock Canyon", "Squaw Peak", "cottonwood", "gamble oak", "scrub oak", "foothill", "pumpkin patch", "cornfield", "harvest moon", "bonfire", "woodsmoke", "frost", "stubble field", "Sundance", "Alpine Loop", "canyon road"],
+      verb: ["scatter", "drift", "turn", "rustle", "fall", "blow", "change", "dance", "weep", "ignite", "blaze", "flare", "smolder", "release", "surrender", "shimmer", "rake", "crunch", "spiral", "gust", "linger", "deepen", "redden", "bare"],
+      preposition: ["through", "beneath", "among", "under", "beside", "along", "past", "across", "over", "within", "between", "into"]
+    },
+    utah_lake_spring: {
+      adj: ["thawing", "bright", "rippling", "shallow", "breezy", "distant", "clear", "glassy", "mild", "silty", "freshening", "hazy", "pewter", "jade-green", "wind-ruffled", "brackish", "low", "flooding", "wading", "migratory", "nesting", "blooming", "tentative", "luminous"],
+      noun: ["reed", "lake", "shore", "gull", "sail", "water", "marsh", "reflection", "tide", "morning", "pelican", "heron", "carp", "cattail", "bulrush", "mud flat", "inlet", "Provo Bay", "American Fork", "Lindon Marina", "runoff", "snowmelt", "sandbar", "waterfowl", "teal", "widgeon", "ibis", "egret", "channel", "ferry"],
+      verb: ["ripple", "wake", "thaw", "shine", "return", "mirror", "wash", "sparkle", "breathe", "flood", "overflow", "teem", "migrate", "nest", "hover", "skim", "surge", "brim", "refresh", "renew", "swell", "settle", "green", "open"],
+      preposition: ["across", "along", "past", "over", "beside", "into", "beneath", "through", "within", "among", "around", "above"]
+    },
+    great_salt_lake: {
+      adj: ["briny", "vast", "flat", "alkaline", "rose-tinged", "pale", "stinging", "mineral", "crusted", "remote", "surreal", "blinding", "receding", "ancient", "primordial", "halite-white", "pink", "saline", "windswept", "desolate", "otherworldly", "shimmering"],
+      noun: ["brine shrimp", "salt flat", "causeway", "Antelope Island", "pelican", "phalarope", "flamingo-pink water", "salt crust", "shoreline", "dune", "lake bed", "Bonneville", "spiral jetty", "bison", "pronghorn", "gull", "tufa", "evaporation pond", "alkali", "mirage", "horizon", "Promontory Point", "Stansbury Island"],
+      verb: ["recede", "crystallize", "sting", "shimmer", "evaporate", "crust", "bleach", "reflect", "shrink", "expose", "salt", "preserve", "float", "pink", "glisten", "crack", "lay bare", "harden", "dry", "stretch", "flatten", "blind", "dissolve"],
+      preposition: ["across", "along", "above", "beneath", "beyond", "into", "over", "past", "within", "under", "beside", "through"]
+    },
+    pioneer_heritage: {
+      adj: ["weathered", "handcart", "sunburned", "faithful", "resolute", "pioneer", "covenant", "westward", "dust-covered", "iron-willed", "suffering", "devoted", "historic", "persevering", "trail-worn", "humble", "steadfast", "sacred", "gathered", "Latter-day", "chosen", "promised", "consecrated", "enduring"],
+      noun: ["handcart", "wagon", "Salt Lake Temple", "Brigham Young", "Martin's Cove", "Willie Company", "pioneer", "Zion", "covenant", "restoration", "Joseph Smith", "Book of Mormon", "Nauvoo", "Missouri", "exodus", "Desert News", "Great Basin", "Deseret", "beehive", "seagull", "cricket", "harvest", "tabernacle", "This is the Place monument", "Jordan River"],
+      verb: ["cross", "settle", "gather", "consecrate", "build", "sacrifice", "remember", "honor", "inherit", "carry", "pull", "push", "press on", "arrive", "dedicate", "covenant", "suffer", "persevere", "pray", "harvest", "plant", "stake", "witness", "establish"],
+      preposition: ["across", "through", "into", "toward", "along", "beyond", "over", "beneath", "within", "among", "past", "beside"]
+    },
+    byu_football: {
+      adj: ["royal", "blue", "white", "thundering", "proud", "roaring", "crowded", "electric", "faithful", "Cougar", "rival", "soaring", "gridiron", "cold", "crisp", "autumn", "triumphant", "bruising", "relentless", "storied", "sacred", "tradition-bound"],
+      noun: ["LaVell Edwards Stadium", "Cougar", "touchdown", "rivalry", "Utah Utes", "kickoff", "crowd", "marching band", "end zone", "football", "quarterback", "Hail Mary", "season", "bowl game", "honor code", "team prayer", "locker room", "blue turf", "jersey", "trophy", "fan", "tailgate", "alma mater", "fight song"],
+      verb: ["roar", "charge", "tackle", "cheer", "score", "rally", "fight", "run", "throw", "catch", "kick", "rise", "stand", "thunder", "surge", "defend", "honor", "unite", "celebrate", "triumph", "fall", "return", "compete", "strive"],
+      preposition: ["across", "through", "into", "beneath", "above", "beyond", "along", "within", "beside", "past", "around", "under"]
+    },
+    mountain_summer: {
+      adj: ["high", "clear", "alpine", "wildflower-dotted", "cool", "bright", "breezy", "boulder-strewn", "sky-blue", "thin-aired", "sun-drenched", "green", "rocky", "open", "sweeping", "storm-building", "thunderhead", "vast", "birdsong-filled", "lupine-purple", "granite-grey", "fleeting", "brief", "radiant"],
+      noun: ["columbine", "lupine", "Indian paintbrush", "marmot", "pika", "trail", "tarn", "cirque", "snowfield", "thunderstorm", "lightning", "wildflower meadow", "granite", "talus", "ridgeline", "pass", "Wheeler Peak", "King's Peak", "Uinta", "High Uintas Wilderness", "stream", "waterfall", "footbridge", "cairn", "summit register"],
+      verb: ["bloom", "buzz", "scurry", "climb", "crest", "gust", "storm", "clear", "shine", "cool", "lift", "open", "spread", "stretch", "breathe", "survey", "descend", "splash", "tumble", "flow", "melt", "emerge", "wander", "discover"],
+      preposition: ["above", "across", "along", "among", "around", "below", "beneath", "beside", "beyond", "into", "over", "through"]
+    }
   },
-
-  autumn: {
-    titles: [
-      "Autumn Evening",
-      "After the Leaves Fall",
-      "Cold Season",
-      "Autumn on the Hill Path",
-      "Late Light"
-    ],
-    openings: [
-      "Autumn enters by way of the western wind,",
-      "Late light lies thin across the hillside path,",
-      "The first cold reaches the outer fence,",
-      "Evening settles over the distant trees,",
-      "The sky grows high and the air turns spare,"
-    ],
-    images: [
-      "yellow leaves collect beside the worn steps.",
-      "wild geese vanish beyond the pale clouds.",
-      "the chrysanthemums hold their color in silence.",
-      "the stream carries a few red leaves away.",
-      "the grass bends low beneath the frost."
-    ],
-    reflections: [
-      "I feel the season more than I can speak,",
-      "the heart yields quietly to this clarity,",
-      "old partings return with the colder air,",
-      "I stand still and listen to what is leaving,",
-      "the day grows empty, but not unkind,"
-    ],
-    transitions: [
-      "A woodcutter's song fades along the slope,",
-      "Smoke rises straight from a distant roof,",
-      "The long road keeps its silence to the end,",
-      "The mountain edge darkens by slow degrees,",
-      "No footsteps pass the narrow bridge,"
-    ],
-    closings: [
-      "and evening closes over the remaining light.",
-      "until only the clear sky is left behind.",
-      "as if the world had finished saying farewell.",
-      "and the cold makes every thought more exact.",
-      "while one leaf turns in the stream below."
-    ]
-  },
-
-  spring: {
-    titles: [
-      "Spring Rain",
-      "Early Spring",
-      "By the Garden Wall",
-      "Spring Morning",
-      "New Season"
-    ],
-    openings: [
-      "Spring rain arrives before the dawn is clear,",
-      "A mild wind enters through the half-closed gate,",
-      "Morning light rests on the wet garden stones,",
-      "The new season stirs the branches all at once,",
-      "Clouds lift slowly from the distant fields,"
-    ],
-    images: [
-      "pear blossoms scatter over the moss below.",
-      "swallows turn above the narrow lane.",
-      "green shoots rise along the old wall base.",
-      "the stream sounds fuller after the rain.",
-      "willow threads tremble in the pale air."
-    ],
-    reflections: [
-      "the heart opens, though I do not call it joy,",
-      "I watch quietly and let the morning pass,",
-      "some forgotten brightness returns for a moment,",
-      "it seems enough merely to remain here,",
-      "the season speaks most clearly when no one answers,"
-    ],
-    transitions: [
-      "A neighbor's window opens and closes once,",
-      "From the far fields comes the smell of wet earth,",
-      "Sunlight begins to gather on the eaves,",
-      "Drops still fall from the last low branch,",
-      "The courtyard grows brighter without hurry,"
-    ],
-    closings: [
-      "and the whole day feels newly washed.",
-      "while the blossoms drift beyond the wall.",
-      "as though spring had entered without footsteps.",
-      "and the light stays a little longer than before.",
-      "until even silence seems full of color."
-    ]
-  },
-
-  solitude: {
-    titles: [
-      "Sitting Alone",
-      "Solitary Evening",
-      "Quiet Room",
-      "No Visitor",
-      "Alone in the Hills"
-    ],
-    openings: [
-      "No visitor comes to the hill room today,",
-      "The small gate remains closed through the afternoon,",
-      "I sit alone beside an unlit lamp,",
-      "The path outside is empty after rain,",
-      "The room is narrow, but the silence is deep,"
-    ],
-    images: [
-      "dust rests undisturbed on the low table.",
-      "pine shadows lean across the threshold.",
-      "the tea cools beside the open book.",
-      "one bird calls, then does not call again.",
-      "the mountain mist gathers at the window."
-    ],
-    reflections: [
-      "in such stillness, thought becomes almost visible,",
-      "I find no grief in being left alone,",
-      "the mind loosens from its needless noise,",
-      "what felt heavy in daylight now grows light,",
-      "solitude asks little and gives enough,"
-    ],
-    transitions: [
-      "A cloud drifts slowly past the far ridge,",
-      "The shadows climb the wall and then disappear,",
-      "By degrees the room enters evening,",
-      "The incense thread burns down without witness,",
-      "Only the wind keeps company with the pines,"
-    ],
-    closings: [
-      "and I let the day end without resistance.",
-      "as though quiet were a kind of answer.",
-      "until the night folds into the empty chair.",
-      "and even loneliness becomes serene.",
-      "with nothing missing from the final hour."
-    ]
-  },
-
-  farewell: {
-    titles: [
-      "Parting at the Bridge",
-      "Farewell Song",
-      "After the Departure",
-      "Seeing a Friend Off",
-      "At the River Crossing"
-    ],
-    openings: [
-      "At the river crossing, we part before noon,",
-      "Your boat has already moved beyond the reeds,",
-      "The last words were spoken beside the bridge,",
-      "Dust rose lightly where your horse turned south,",
-      "You left while morning was still cool,"
-    ],
-    images: [
-      "only the wake remains on the quiet water.",
-      "the long road fades among willows and mist.",
-      "a traveler's shadow narrows in the distance.",
-      "the shore grass bends after your passing.",
-      "the ferry rope strikes softly against the post."
-    ],
-    reflections: [
-      "I stand longer than there is reason to stand,",
-      "parting is simple; its echo is not,",
-      "the heart follows farther than the eyes can go,",
-      "nothing is said now that was not already known,",
-      "I turn back slowly, though the road is empty,"
-    ],
-    transitions: [
-      "Clouds drift low over the far bank,",
-      "Even the gulls seem slower above the water,",
-      "The afternoon grows quiet around the landing,",
-      "A faint song comes from another unseen boat,",
-      "The reeds close again around the channel,"
-    ],
-    closings: [
-      "and the river keeps the rest for itself.",
-      "while one thought travels on without me.",
-      "until distance becomes only a color in the air.",
-      "and silence arrives where your voice had been.",
-      "as though departure were the truest part of meeting."
-    ]
-  },
-
-  river: {
-    titles: [
-      "By the River",
-      "Watercourse",
-      "River Mist",
-      "At the Ford",
-      "Flowing East"
-    ],
-    openings: [
-      "The river moves east beneath a pale sky,",
-      "Morning mist lingers above the waterline,",
-      "At the ford, cold light touches the stones,",
-      "The long current passes without haste,",
-      "Clouds travel with the river beyond the reeds,"
-    ],
-    images: [
-      "small waves fold against the dark bank grass.",
-      "a fishing boat drifts near the far shore.",
-      "white gulls rise and settle again.",
-      "the sandbar shines after the night's rain.",
-      "water sounds among the roots of willow trees."
-    ],
-    reflections: [
-      "I watch until my own thoughts seem to flow with it,",
-      "the heart eases when it follows moving water,",
-      "nothing stays, yet nothing feels lost,",
-      "the river speaks in a language without words,",
-      "I could remain here through the whole afternoon,"
-    ],
-    transitions: [
-      "Sunlight breaks briefly through the passing cloud,",
-      "An oar strikes the water and then is still,",
-      "The far hills fade and return in mist,",
-      "A cool breath rises from the current,",
-      "The bank path bends out of sight among reeds,"
-    ],
-    closings: [
-      "and the current carries away what I cannot hold.",
-      "until even memory moves more gently.",
-      "while the day widens beyond the opposite shore.",
-      "and all unfinished thoughts drift into distance.",
-      "as though the water had room for every silence."
-    ]
-  }
+  closings: [
+    "until the valley fades into the dusk.",
+    "and the Wasatch keeps what I cannot name.",
+    "as the campus grows quiet in the cold air.",
+    "while the canyon shadows stretch into night.",
+    "and no trace remains on the sandstone wall.",
+    "while Utah Lake mirrors the fading light.",
+    "and the Y stands quiet on the dark hill.",
+    "as the first snow reaches the valley floor.",
+    "until only the echo of the carillon remains.",
+    "and the Salt Lake shimmers into the pale distance.",
+    "while the handcart ruts still cross the frozen ground.",
+    "as the temple spires hold the last of the light.",
+    "and the Uintas keep their silence through the storm.",
+    "while Timpanogos turns its face from the setting sun.",
+    "and the pioneers' names are carved in the canyon stone.",
+    "as the brine flies circle the receding shore.",
+    "until the Alpine Loop is swallowed by the dark.",
+    "and the Cougar banner fades with the autumn wind.",
+    "while the Great Basin holds its breath beneath the stars.",
+    "and the hoodoos cast their shadows into the empty wash.",
+    "until the Jordan River finds the lake again.",
+    "as the Spiral Jetty sinks beneath the rising brine.",
+    "and the beehive state keeps turning through the night.",
+    "while the desert remembers every name the wind forgets.",
+    "and Zion's towers hold the light a little longer.",
+    "as the choir's last note dissolves into the dome.",
+    "and the Book of Mormon sits open on the empty pew.",
+    "while the tailgate smoke drifts past the blue and white.",
+    "and the King's Peak register holds one more forgotten name.",
+    "until the wildflowers close against the mountain cold."
+  ]
 };

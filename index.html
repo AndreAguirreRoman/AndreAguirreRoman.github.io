@@ -3,64 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yuan Mei Style Poem Generator</title>
+  <title>Yuan Mei Poem Generator · Final Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="container">
-    <header class="hero">
-      <h1>Yuan Mei Style Poem Generator</h1>
-      <p>
-        Generate a new poem inspired by classical Chinese lyric style:
-        quiet imagery, reflection, and a restrained emotional turn.
-      </p>
+  <nav class="top-nav-bar">
+    <a href="index.html" class="nav-link">Poem Generator |</a>
+    <a href="yuanmei.html" class="nav-link">Yuan Mei's Biography |</a>
+    <a href="poems.html" class="nav-link">Poems </a>
+  </nav>
+
+  <div class="container">
+    <header class="header">
+      <div class="seal">Final Project</div>
+      <div class="title-zh">袁枚詩歌生成器</div>
+      <div class="title-en">Yuan Mei Poem Generator</div>
+      <div class="header-rule"></div>
     </header>
 
-    <section class="controls">
-      <div class="field">
-        <label for="themeSelect">Theme</label>
-        <select id="themeSelect">
-          <option value="moonlight">Moonlight</option>
-          <option value="autumn">Autumn</option>
-          <option value="spring">Spring</option>
-          <option value="solitude">Solitude</option>
-          <option value="farewell">Farewell</option>
-          <option value="river">River</option>
-          <option value="random">Random</option>
-        </select>
-      </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/YuanMeiLuoPingI.jpg"
+     alt="A portrait of Yuan Mei"
+     class="author-portrait"
+     style="display:block; margin: 0 auto; width:200px; height:300px; object-fit:cover;">
+    <div class="word-slot name"><label>First Name</label><input class="word-input" id="name" placeholder="name" maxlength="40" /></div>
 
-      <div class="field">
-        <label for="lengthSelect">Poem Length</label>
-        <select id="lengthSelect">
-          <option value="4">4 lines</option>
-          <option value="6">6 lines</option>
-        </select>
-      </div>
+    <p class="section-label">Enter up to three words to inspire your poem</p>
 
-      <div class="field">
-        <label for="titleToggle">Include Title</label>
-        <select id="titleToggle">
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </div>
-    </section>
+    <div class="word-inputs">
+      <div class="word-slot"><label>Word I</label><input class="word-input" id="w1" placeholder="rain" maxlength="30" /></div>
+      <div class="word-slot"><label>Word II</label><input class="word-input" id="w2" placeholder="scholar" maxlength="30" /></div>
+      <div class="word-slot"><label>Word III</label><input class="word-input" id="w3" placeholder="mountain" maxlength="30" /></div>
+    </div>
 
-    <section class="buttons">
-      <button id="generateBtn">Generate Poem</button>
-      <button id="copyBtn">Copy</button>
-    </section>
+    <div class="word-inputs" style="margin-top: 1.5rem;">
+  <div class="word-slot" style="width: 100%; max-width: 280px; margin: 0 auto;">
+    <label for="themeSelect">Theme</label>
+    <select id="themeSelect" class="word-input theme-select">
+      <option value="random">Theme</option>
+      <option value="wasatch_winter">Wasatch Winter</option>
+      <option value="campus_twilight">Campus Twilight</option>
+      <option value="desert_canyon">Desert Canyon</option>
+      <option value="provo_autumn">Provo</option>
+      <option value="utah_lake_spring">Utah Lake Spring</option>
+      <option value="great_salt_lake">Great Salt Lake</option>
+      <option value="pioneer_heritage">Pioneer Heritage</option>
+      <option value="byu_football">BYU Football</option>
+      <option value="mountain_summer">Mountain Summer</option>
+    </select>
+  </div>
+</div>
 
-    <section class="output-card">
-      <div id="poemTitle" class="poem-title"></div>
-      <pre id="poemOutput" class="poem-output">Your poem will appear here.</pre>
-    </section>
+    <button class="btn-generate" id="genBtn" onclick="generatePoem()">Compose poem</button>
 
-    <p id="statusMessage" class="status-message"></p>
-  </main>
+    <div class="spinner" id="spinner">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div style="margin-top: 10px;">Consulting the old poet…</div>
+    </div>
+
+    <div class="poem-area" id="poemArea">
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+      <div class="poem-eyebrow">Yuan Mei style · 隨園詩稿</div>
+      <div class="poem-text" id="poemText"></div>
+      <div class="poem-footer" id="poemFooter"></div>
+    </div>
+
+    <div class="error-msg" id="errorMsg"></div>
+
+    <footer class="page-footer">
+      <a href="yuanmei.html" style="color: inherit; text-decoration: none;">
+        Andre Aguirre · 2026
+      </a>
+    </footer>
+  </div>
 
   <script src="data.js"></script>
   <script src="script.js"></script>
+  <script>
+    
+      document.querySelectorAll('.word-input').forEach(input => {
+        input.addEventListener('keydown', e => { 
+          if (e.key === 'Enter') generatePoem(); 
+        });
+      });
+    </script>
 </body>
 </html>
